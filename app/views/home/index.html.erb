@@ -1,0 +1,29 @@
+<div id="app-wrapper">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <!-- select("fund", "fund_id", @fund.collect { |f| [f.name, f.id] } }, { include_blank: true })> -->
+      <label for="fund">Select Fund:</label>
+      <select id="fund1">
+        <option value=""></option>
+        <% @funds.each do |fund| %>
+          <option value="<%= fund.id %>"><%= fund.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div id="schemes-div1" class="col-md-4"></div>
+    <div id="date-div1" class="col-md-4">
+      <label for="date">Select Date:</label>
+      <input id="date1" type="text" name="">
+    </div>
+    <div id="investment-div1" class="col-md-4">
+      <label for="investment">Enter Investement Amount:</label>
+      <input type="text" id="investment1" />
+    </div>
+    <div id="units-div1" class="col-md-4">
+      <label for="">Units:</label>
+    </div>
+    <button class="btn btn-info" id="addForm1">&#43;</button>
+  </div>
+</div>
+
+<button class="btn btn-info" id="investment-calc">CalculateInvestment</button>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703065106) do
+ActiveRecord::Schema.define(version: 20170703095627) do
 
   create_table "mutual_funds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 20170703065106) do
     t.datetime "date"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.index ["date"], name: "index_nav_histories_on_date", using: :btree
     t.index ["mutual_fund_id"], name: "index_nav_histories_on_mutual_fund_id", using: :btree
+    t.index ["scheme_code"], name: "index_nav_histories_on_scheme_code", using: :btree
   end
 
 end

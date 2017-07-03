@@ -5,12 +5,14 @@ namespace :kuvera do
     axis_mutual_fund = MutualFund.create!(name: 'axis_mutual_fund')
     nav_history_array = []
     start_time = Time.now
+    id_counter = 1
     puts "================ start time is #{start_time}"
     CSV.foreach('config/axis_mutual_fund.csv', {headers: true, col_sep: ";"}) do |row|
       hash = row.to_hash
       next unless hash.present? && row.to_s.split(';').length > 0
       next if row.to_s.include?("Open Ended Schemes") || row.to_s.include?("Mutual Fund")
-      hash = hash.merge({ "mutual_fund_id"=> axis_mutual_fund.id, "date" => Date.parse(hash['date']), "created_at" => DateTime.now, "updated_at" => DateTime.now})
+      hash = hash.merge({ "id" => id_counter, "mutual_fund_id"=> axis_mutual_fund.id, "date" => Date.parse(hash['date']), "created_at" => DateTime.now, "updated_at" => DateTime.now})
+      id_counter += 1
       nav_history_array.push(hash)
     end
 
